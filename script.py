@@ -1,4 +1,6 @@
 import pandas as pd
+import country_converter as coco
+cc = coco.CountryConverter()
 
 # parameters
 file_path = "homework.csv"
@@ -88,8 +90,7 @@ columns_renames = {
     "item depth (inches)": "length",
     "item width (inches)": "width",
     "item height (inches)": "height",
-    # will be converted
-    "url california label (jpg)": "prop_65",
+    "url california label (jpg)": "prop_65", # will be converted to True or False
     "wholesale ($)": "cost_price",
     'min order qty': 'min_price',
     "item category": "product__product_class__name",
@@ -158,6 +159,20 @@ for index, row in df.iterrows():
         df.at[index, "min_price"] = pd.NA
     else:
         df.at[index, "min_price"] = row["min_price"] * row['cost_price']
+
+# Convert to ALPHA3 country names
+df['product__country_of_origin__alpha_3'] = cc.pandas_convert(series=df['product__country_of_origin__alpha_3'],to='ISO3')
+
+# Add all bulbs
+df['attrib__number_bulbs'] = df['attrib__number_bulbs'] + df['bulb 2 count']
+
+# Handle attrib__ul_certified info
+# if it has a "UL" it will be set to True
+for index, row in df.iterrows():
+    if row["attrib__ul_certified"] == "UL":
+        df.at[index, "attrib__ul_certified"] = True
+    else:
+        df.at[index, "attrib__ul_certified"] = pd.NA
 
 # Drop all columns that are not needed and create output dataframe
 output_df = pd.DataFrame(columns=full_list_of_columns)
