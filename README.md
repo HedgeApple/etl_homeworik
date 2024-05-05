@@ -1,19 +1,53 @@
-# Task
+<h1>ETL Service</h1>
+<h2>Overview</h2>
+<p>This Python project implements an Extract, Transform, Load (ETL) service that processes data from CSV files. It reads data from an input CSV file, applies transformations based on specified rules, and then writes the transformed data to an output CSV file.</p>
+<h2>Features</h2>
+<ul>
+    <li>Reads CSV files containing raw data.</li>
+    <li>Transforms the data according to predefined rules.</li>
+    <li>Writes the transformed data to a new CSV file.</li>
+    <li>Supports various transformations such as date format conversion, currency rounding, and unit conversion.</li>
+    <li>Code coverage at 93% you can run unit tests with pytest and coverage: <code>coverage run -m pytest .</code>.</li>
+</ul>
+<h2>How to Use</h2>
+<h3>Usage</h3>
+<ol>
+    <li><p>Prepare your input CSV file containing the raw data to be processed.</p></li>
+    <li><p>Define a columns mapping file in JSON format. This file specifies how each column in the input file should be transformed. An example columns mapping file might look like this:</p></li>
+</ol>
 
-1. Fork this project
-2. Create a python script that reads all of the rows from `homework.csv` and outputs them to a new file `formatted.csv` using the headers from `example.csv` as a guideline.  (See `Transformations` below for more details.)
-3. You may you any libraries you wish, but you must include a `requirements.txt` if you import anything outside of the standard library.
-4. There is no time limit for this assignment.
-5. You may ask any clarifying questions via email.
-6. Create a pull request against this repository with an English description of how your code works when you are complete
+```json
+{
+    "system creation date": "date",
+    "wholesale ($)": "wholesale_price",
+    "item width (cm)": "width_inches",
+    "item length (feet)": "length_inches",
+    "item weight (kg)": "weight_pounds",
+    "upc": "upc_code"
+}
+```
+<ol start="3"><li>Run the ETL service using the following command:</li></ol>
+<pre><code>python main.py input.csv output.csv columns_mapping.json
+</code></pre>
 
-## Transformations
+<p>Replace <code>input.csv</code> with the path to your input CSV file, <code>output.csv</code> with the desired path for the output CSV file, and <code>columns_mapping.json</code> with the path to your columns mapping file.</p>
 
-Follow industry standards for each data type when decided on the final format for cells.
+<ol start="4"><li>Once the process completes, you will find the transformed data written to the specified output CSV file.</li></ol>
+<h2>Example</h2>
+<p>Let's say we have an input CSV file <code>data.csv</code> containing the following data:</p>
 
-* Dates should use ISO 8601
-* Currency should be rounded to unit of accounting. Assume USD for currency and round to cents.
-* For dimensions without units, assume inches. Convert anything which isn't in inches to inches.
-* For weights without units, assume pounds. Convert anything which isn't in pounds to pounds.
-* UPC / Gtin / EAN should be handled as strings
-* Floating point and decimal numbers should preserve as much precision as possible
+| system creation date | wholesale ($) | item width (cm) | item length (feet) | item weight (kg) | upc         |
+|----------------------|---------------|------------------|---------------------|-------------------|-------------|
+| 7/7/15               | $10.50        | 20               | 2                   | 2.1               | 123456789012|
+
+
+<p>And a columns mapping file <code>columns_mapping.json</code> as shown above.</p>
+<p>Running the ETL service with the following command:</p>
+<pre><code>python main.py data.csv transformed_data.csv columns_mapping.json
+</code></pre>
+<p>Will result in a new CSV file <code>transformed_data.csv</code> with the following data:</p>
+
+| date       | wholesale_price | width_inches | length_inches | weight_pounds | upc_code    |
+|------------|-----------------|--------------|---------------|---------------|-------------|
+| 2015-07-07 | 10.50           | 7.87         | 24            | 4.62          | 123456789012|
+
