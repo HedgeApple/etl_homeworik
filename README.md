@@ -17,3 +17,23 @@ Follow industry standards for each data type when decided on the final format fo
 * For weights without units, assume pounds. Convert anything which isn't in pounds to pounds.
 * UPC / Gtin / EAN should be handled as strings
 * Floating point and decimal numbers should preserve as much precision as possible
+
+## Run ETL
+
+### Requirements
+- Python 3.10 
+
+### Install dependencies
+
+```bash
+pip install -r requirements.txt 
+```
+### Usage
+
+```
+python3 run_etl.py 
+```
+#### Can pass the filepath
+```
+python3 run_etl.py filepath
+```

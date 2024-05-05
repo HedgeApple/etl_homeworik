@@ -41,7 +41,8 @@ ProductSchema = DataFrameSchema(
         "attrib__cord_length": Column(float, nullable=True),
         "attrib__arm_height": Column(float, nullable=True),
         "attrib__seat_height": Column(float, nullable=True),
-        "attrib__seat_width": Column(dtype="object", nullable=True),  #  20x24
+         # TODO Check if the attrib__seat_width is able to calculate
+        "attrib__seat_width": Column(dtype="object", nullable=True),  #  20x24 
         "attrib__weight_capacity": Column(float, nullable=True),
         "product__country_of_origin__alpha_3": Column(str, nullable=True),
         "product__bullets__1": Column(str, nullable=True),

@@ -1,3 +1,4 @@
+# TODO Review the mapping with the product team
 columns_mapping = {
     "item number": "manufacturer_sku",
     "upc": "ean13",

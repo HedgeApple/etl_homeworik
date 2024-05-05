@@ -1,4 +1,7 @@
+import logging
 import pandas as pd
+
+logger = logging.getLogger(__name__)
 
 class CSVReader:
     def __init__(self):
@@ -16,10 +19,9 @@ class CSVReader:
         - DataFrame: The DataFrame containing the CSV data.
         """
         try:
-            data = pd.read_csv(file_path, usecols=columns, engine='python')
-            return data
+            return pd.read_csv(file_path, usecols=columns, engine='python')
         except Exception as e:
-            print("An error occurred:", e)
+            logger.exception("An error occurred:", e)
             
     
             
