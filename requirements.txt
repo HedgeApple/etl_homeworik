@@ -1,3 +1,5 @@
 fire==0.6.0
 pandas==2.2.2
-
+pandera==0.18.3
+country-converter==1.2
+numpy==1.26.4
