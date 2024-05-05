@@ -12,7 +12,7 @@ def run(file_path='homework.csv'):
     - file_path (str): Path to the CSV file.
     """
     from elt_homework.elt_processor import ETL 
-    logging.info('Starring ETL')
+    logging.info('Starting ETL')
     etl = ETL()
     etl.process(file_path)
 
