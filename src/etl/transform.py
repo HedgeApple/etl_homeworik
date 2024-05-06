@@ -55,7 +55,7 @@ class Transform:
     def create_design_id_column(df_base: pl.DataFrame) -> pl.DataFrame:
         """
         Creates the 'design_id' column.
-        It takes the first 10 digits of the designer name hash
+        It takes the first 10 digits of the designer name hash.
         """
         return df_base.with_columns(
             pl.when(pl.col("attrib__designer").is_not_null())
@@ -73,7 +73,6 @@ class Transform:
     def create_ul_certified_column(df_base: pl.DataFrame) -> pl.DataFrame:
         """
         Creates the 'ul_certified' column.
-        It takes the first 10 digits of the design name hash
         """
         return df_base.with_columns(
             pl.when(
