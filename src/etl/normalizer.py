@@ -102,14 +102,16 @@ class Normalizer:
         """
         Converts the inches and pound columns to float.
         """
-        return df_base.with_columns(
-            [
-                pl.col(col).cast(pl.Float64)
-                for col in df_base.select(
-                    r"^[^dimension]*\(\s*(inches|pounds)\s*\).*$"
-                ).columns
-            ]
-        )
+        columns_to_parse = df_base.select(
+            r"^.*\(\s*(inches|pounds)\s*\).*$"
+        ).columns
+        dimension_pattern = re.compile(r".*dimensions?.*")
+        for col in columns_to_parse:
+            if dimension_pattern.search(col):
+                continue
+            df_base = df_base.with_columns(pl.col(col).cast(pl.Float64))
+
+        return df_base
 
     def convert_currency(self, df_base: pl.DataFrame) -> pl.DataFrame:
         """
