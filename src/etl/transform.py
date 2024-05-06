@@ -226,10 +226,6 @@ class Transform:
 
     def transform_dimensions(self, df_base: pl.DataFrame) -> pl.DataFrame:
         """
-        Transform all the columns that constains 'dimensions' keyword.
-        Generally these columns comes in the format length x width x height
-        but there are edge cases where it has only two dimensions 'length' and 'width'.
-
         Transforms all columns containing the 'dimensions' keyword.
         Generally, these columns come in the format length x width x height,
         however there are cases where some columns have only two dimensions:
