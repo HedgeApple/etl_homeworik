@@ -1,6 +1,6 @@
 [data_file_source]
 file_name = "*.csv" # Name or pattern to read the files.
-file_path = "src/data/" # Directory where the files is.
+file_path = "src/data/" # Directory where the files are.
 file_extension = ".csv" # Extension of the file.
 file_separator = "," # Separator of the csv file.
 file_encoding = "utf8" # Encoding of the file.
