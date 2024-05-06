@@ -1,0 +1,16 @@
+[INFO]  [PIPELINE] Starting ETL pipeline.
+[INFO]  [LOADER] Starting reading files from: /src/data/*.csv.
+[INFO]  [LOADER] Found 1 file(s) to read.
+[INFO]  [LOADER] File(s) read successfully.
+[INFO]  [PIPELINE] Starting the normalization of the data.
+[WARNING]  [NORMALIZER] Removed 72 null upcs.
+[INFO]  [NORMALIZER] Converting upc to ean13.
+[INFO]  [NORMALIZER] Renaming columns.
+[INFO]  [NORMALIZER] Converting all countries to the alpha_3 standard.
+[INFO]  [NORMALIZER] Converting all date columns to ISO 8601.
+[INFO]  [PIPELINE] Starting the transformation of the data.
+[INFO]  [TRANSFORM] Created 27 new columns from the dimension columns.
+[INFO]  [PIPELINE] Completed in 0.22 minutes.
+[INFO]  [LOADER] File will be saved in CSV format.
+[INFO]  [LOADER] File saved successfully on the path: /src/output/formatted.csv
+[INFO]  [PIPELINE] The full log of the execution can be found at: src/logs/

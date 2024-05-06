@@ -1,0 +1,130 @@
+[data_file_source]
+file_name = "*.csv" # Name or pattern to read the files.
+file_path = "src/data/" # Directory where the files is.
+file_extension = ".csv" # Extension of the file.
+file_separator = "," # Separator of the csv file.
+file_encoding = "utf8" # Encoding of the file.
+
+[data_file_output]
+file_name = "formatted" # The name of the final file.
+file_path = "src/output/" # Directory where the file will be saved.
+file_extension = ".csv" # File format to be saved
+file_separator = "," # Separator of the csv file to be saved
+
+[data_config]
+date_format = "%m/%d/%y" # The date format inside the file.
+valid_dimensions = ["length", "height", "width", "weight"]
+inches_units = ["cm", "m", "ft"] # Valids units to convert to inches
+pounds_units = ["g", "kg", "oz"] # Valids units to convert to pounds
+
+[data_columns]
+date_columns = ["creation_date"] # All the column that must be parsed as date.
+# Columns that will not be used.
+useless_columns = ["new item", "sales uom", "msrp ($)", "min order qty", "item type", "item diameter (inches)", "item finish 2", "item finish 3", "primary image filename", "url primary image", "url alternate image 1", "url alternate image 2", "url alternate image 3", "url alternate image 4", "url alternate image 5", "url alternate image 6", "url alternate image 7", "url alternate image 8", "url room setting image 1", "url room setting image 2", "url room setting image 3", "url drawing", "url interactive 360 image", "url animated gif", "url product sheet", "url instruction sheet", "url marketing sheet 1", "url california label (pdf)", "item collection", "truck only", "carton2volumecubicfeet", "ada compliant", "available with eef", "title 24 compliant", "certified damp/wet", "bulb 1 base", "bulb 2 wattage", "bulb 2 type", "bulb 2 base", "bulb 2 included", "led", "total lumens", "color temperature", "cri", "voltage", "dimmable", "extension rods (inches)", "min overall height (inches)", "min extension (inches)", "max extension (inches)", "hcwo (inches)", "shade/glass description", "shade/glass materials", "shade/glass finish", "shade/glass width", "shade/glass width at top (inches)", "shade/glass width at bottom (inches)", "shade/glass height (inches)", "shade shape", "harp/spider", "cord color", "chain length (inches)", "chain price ($)", "replacement glass price ($)", "replacement crystal price ($)", "mirror width (inches)", "mirror height (inches)", "drawer count", "primary catalog", "primary catalog page", "related items", "brand bio", "helpful tips", "record status"]
+# All the column that must be parsed as int.
+int_columns = ["product__multipack_quantity", "bulb 1 count", "bulb 2 count"]
+# All the column that must be parsed as boolean.
+boolean_columns = ["attrib__bulb_included", "attrib__outdoor_safe"]
+# The order in which the columns will appear in the final file.
+# Since there are columns that will be created during runtime,
+# a placeholder has been added for them.
+columns_order = [
+    "creation_date",
+    "manufacturer_sku",
+    "ean13",
+    "weight",
+    "length",
+    "width",
+    "height",
+    "prop__65",
+    "cost_price",
+    "min_price",
+    "made_to_order",
+    "product__product_class__name",
+    "product__brand__name",
+    "product__title",
+    "product__description",
+    "bullets_placeholder",
+    "product__configuration__codes",
+    "product__multipack_quantity",
+    "product__country_of_origin__alpha_3",
+    "product__parent_sku",
+    "attrib__arm_height",
+    "attrib__bulb_included",
+    "attrib__bulb_type",
+    "attrib__color",
+    "attrib__cord_length",
+    "attrib__design_id",
+    "attrib__designer",
+    "attrib__finish",
+    "attrib__kit",
+    "attrib__material",
+    "attrib__number_bulbs",
+    "attrib__outdoor_safe",
+    "attrib__pile_height",
+    "attrib__seat_height",
+    "attrib__seat_width",
+    "attrib__switch_type",
+    "attrib__ul_certified",
+    "attrib__wattage",
+    "attrib__weight_capacity",
+    "product__styles",
+    "boxes_placeholder",
+    "dimensions_placeholder"
+]
+# It was not possible to determine the values of these columns with
+# the information in the data file.
+unknow_columns = [
+    "attrib__assembly_required",
+    "attrib__back_material",
+    "attrib__blade_finish",
+    "attrib__fill",
+    "attrib__frame_color",
+    "attrib__hardwire",
+    "attrib__leg_color",
+    "attrib__leg_finish",
+    "attrib__orientation",
+    "attrib__seat_depth",
+    "attrib__shade",
+    "attrib__size",
+    "attrib__warranty_years",
+    "attrib__weave",
+]
+
+# All the columns to be renamed.
+[data_normalizer]
+"system creation date" = "creation_date"
+"item number" = "manufacturer_sku"
+"upc" = "ean13"
+"item weight (pounds)" = "weight"
+"item depth (inches)" = "length"
+"item width (inches)" = "width"
+"item height (inches)" = "height"
+"url california label (jpg)" = "prop__65"
+"wholesale ($)" = "cost_price"
+"map ($)" = "min_price"
+"item category" = "product__product_class__name"
+"brand" = "product__brand__name"
+"description" = "product__title"
+"long description" = "product__description"
+"item finish 1" = "product__configuration__codes"
+"carton count" = "product__multipack_quantity"
+"country of origin" = "product__country_of_origin__alpha_3"
+"furniture arm height (inches)" = "attrib__arm_height"
+"bulb 1 included" = "attrib__bulb_included"
+"bulb 1 type" = "attrib__bulb_type"
+"primary color family" = "attrib__color"
+"cord length (inches)" = "attrib__cord_length"
+"licensed by" = "attrib__designer"
+"item finish" = "attrib__finish"
+"conversion kit option" = "attrib__kit"
+"item materials" = "attrib__material"
+"outdoor" = "attrib__outdoor_safe"
+"max overall height (inches)" = "attrib__pile_height"
+"furniture seat height (inches)" = "attrib__seat_height"
+"furniture seat dimensions (inches)" = "attrib__seat_width"
+"switch type" = "attrib__switch_type"
+"safety rating" = "attrib__ul_certified"
+"bulb 1 wattage" = "attrib__wattage"
+"furniture weight capacity (pounds)" = "attrib__weight_capacity"
+"item style" = "product__styles"
