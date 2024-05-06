@@ -13,7 +13,6 @@ src/
 ├─ logs/
 │  ├─ etl_2024_05_06.txt
 ├─ output/
-│  ├─ __init__.py
 │  ├─ formatted.csv
 ├─ utilities/
 │  ├─ __init__.py
