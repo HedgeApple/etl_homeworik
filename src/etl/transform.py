@@ -179,7 +179,6 @@ class Transform:
         columns = df_base.select(regex_str).columns
         pattern = re.compile(regex_str)
         # Valid units for these columns
-
         dimension_pattern = re.compile(r"\s*\(\w*\)")
         # Creates a dict to map the name of the columns
         # key: column name to be replaced, value: new name of the column
@@ -194,8 +193,8 @@ class Transform:
                 # Get the number related to the current column and subtract 1
                 carton_num = int(carton_num) - 1
                 new_column_name = f"boxes__{carton_num}__{unit}"
-                self.boxes_columns.append(new_column_name)
                 # Saves the new names in a list for reordering later
+                self.boxes_columns.append(new_column_name)                
                 renamed_columns[col_name] = new_column_name
 
         return df_base.rename(renamed_columns)
