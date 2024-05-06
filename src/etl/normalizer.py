@@ -99,6 +99,9 @@ class Normalizer:
         return self.convert_units(df_base, valid_units, pattern, "(pounds)")
 
     def convert_units_to_float(self, df_base: pl.DataFrame) -> pl.DataFrame:
+        """
+        Converts the inches and pound columns to float.
+        """
         return df_base.with_columns(
             [
                 pl.col(col).cast(pl.Float64)
