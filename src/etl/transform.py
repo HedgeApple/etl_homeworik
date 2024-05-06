@@ -96,7 +96,7 @@ class Transform:
         return df_base.with_columns(
             (
                 pl.format(
-                    "{} {}",
+                    "{}, {}",
                     pl.col("item substyle")
                     .str.split("/")
                     .list.get(0)
