@@ -151,6 +151,9 @@ class Transform:
     def create_made_to_order_column(
         self, df_base: pl.DataFrame
     ) -> pl.DataFrame:
+        """
+        Creates the 'made_to_order' column.
+        """
         return df_base.with_columns(pl.lit(False).alias("made_to_order"))
 
     @staticmethod
