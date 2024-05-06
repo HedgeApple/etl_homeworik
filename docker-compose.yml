@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  python:
+    build: ./
+    volumes:
+      - ./src/output:/src/output
+      - ./src/logs:/src/logs
+
+volumes:
+  output:
