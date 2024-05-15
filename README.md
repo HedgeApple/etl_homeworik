@@ -17,3 +17,17 @@ Follow industry standards for each data type when decided on the final format fo
 * For weights without units, assume pounds. Convert anything which isn't in pounds to pounds.
 * UPC / Gtin / EAN should be handled as strings
 * Floating point and decimal numbers should preserve as much precision as possible
+
+
+## Solution
+
+For this project, there's a main function that calls the Transform function, each line corrrespond to one "transformation". Different steps are considered since multiple updates are required. 
+At a high level, the steps are the following:
+1. Read the csv files
+2. Rename columns according to a mapping (please check utility file where helpers are located)
+3. Countries are transformed into alpha3 (requirements.txt includes the library to do so)
+4. Datatype transformation, where mostly datatypes are corrected, missing values are filled and more.
+5. Added new columns to match the expected format for the output file
+6. EAN13 column, needed a specific formatting so I added this here, it can be improved to be included within the datatype transformation method.
+
+As a final step, it generates a csv in the same working directory as the input files called "formatted.csv" with the output data.
