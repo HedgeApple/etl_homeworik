@@ -20,7 +20,8 @@ Follow industry standards for each data type when decided on the final format fo
 
 # Solution
 ## Idea
-The idea behind this implementation is that any part of the code can be used to analize others files.
+The underlying concept behind this implementation is that any part of the code can be used to analyze other files. This idea arise due to the 
+various formats in which information could appear, given the multiple clients and sources of information.
 * The mapper can be changed totally to map new files, or can me modified a little by the methods.
 
 * The `DataTransformer` class will handle the transformation over the dataframes and will hold the changes for each column based on the transformations registered.
@@ -56,6 +57,11 @@ For dimension, weights and datetimes no converters were created, in case that th
 
 A self discover method to transform the data is not implemented because what will determinate the conversion is the unit in the header and is not clear until the file is particulary analized.
 
+For example, in case that a new colum appers and the header is `lenght_cm` wich can be mapped to `lenght`, in that case:
+1. You need to update the mapper, use `update` to change the key:value.
+2. Create a new converter with the proper conversion unit.
+3. Register the conversion to `lenght`
+4. Execute the script.
 
 ## Running Tests
 
