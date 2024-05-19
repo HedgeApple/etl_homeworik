@@ -1,3 +1,9 @@
+"""
+Author: Sean Brady
+Contact: seanbrady100@icloud.com
+phone: 417-834-5651
+"""
+
 import pandas as pd #used for manipulating dataframes
 import re #used to split input into tokens based off of regex expression
 import sys #used to get command line args
