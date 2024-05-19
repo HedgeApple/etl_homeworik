@@ -1,0 +1,3 @@
+The pandas library is required for the propgram to run as it.
+
+Pandas can be installed by running 'pip install pandas' from the command line.
